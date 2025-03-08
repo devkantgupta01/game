@@ -38,44 +38,103 @@ main {
     padding : 1rem 2rem;
 }
 
-
 body {
-    background-color: #548688;
-    text-align: center;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color:#fff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin:0;
+}
+
+
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Developer Button Styling */
+#Devloper-name {
+    background-color: #8080ff; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for the button */
+    margin: 10px; /* Margin around the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect */
+#Devloper-name:hover {
+    background-color: #6666cc; /* Darker shade of the button color on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Active effect */
+#Devloper-name:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+}
+
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 .container {
-    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .game {
-    height: 60vmin;
-    width: 60vmin;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.8vmin;
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* 3 colums of equal width */
+    gap: 10px;
+    margin-top:20px;
 }
 
 .box {
-    height: 18vmin;
-    width: 18vmin;
-    border-radius: 1rem;
-    border: none;
-    box-shadow: 0 0 1rem rgba(0, 0, 0.5);
-    font-size: 8vmin;
-    color: #b0413e;
-    background-color : rgba(221, 234, 254, 0.825);
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .box:hover {
-    background-color: rgba(221, 234, 254, 1);
-    transform: scale(1.05);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #f0f0f0;
+}
+
+.box:disabled {
+    background-color: #ccc;
+ /*   cursor: not-allowed; */
 }
 
 #reset-btn {
@@ -102,13 +161,16 @@ body {
 }
 
 .msg-container {
-    height: 30vmin; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
+   
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
 
+.msg-container p {
+    font-size: 24px;
+    margin: 0;
 }
 
 .hide{
