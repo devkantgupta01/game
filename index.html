@@ -8,7 +8,7 @@
  </head>
  <body>
     <div class="msg-container hide">
-        <p id="msg">Winnner</p>
+        <p id="msg">Winner</p>
         <button id="new-btn">New Game</button>
     </div>
     <main>
@@ -28,12 +28,20 @@
 
             </div>
         </div>
+        <button id="Devloper-name">Presented By :- Dev Kant Gupta</button>
+        <button id="toggle-background-sound">Toggle Background Sound</button>
+        <audio id="game-background-sound" src="sound/game-background-sound.wav" loop></audio>
         <button id="reset-btn">Reset Game</button>
     </main>
-    <audio id="win-sound" src="win.mp3"></audio>
-
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+   
+        <audio id="button-sound" src="sound/button-sound.wav"></audio>
+        <audio id="celebration-sound" src="sound/celebration-sound.wav"></audio>
+        <audio id="new-game-sound" src="sound/new-game-sound.wav"></audio>
+        <audio id="restart-sound" src="sound/restart-sound.wav"></audio>
 
     <script src="game.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+    
  </body>
  </html>
