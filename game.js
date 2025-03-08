@@ -3,7 +3,15 @@ let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
-const winSound = document.querySelector("#win-sound");
+let isBackgroundSoundPlaying = false;
+
+const buttonSound = document.querySelector("#button-sound");
+const celebrationSound = document.querySelector("#celebration-sound");
+const newGameSound = document.querySelector("#new-game-sound");
+const restartSound = document.querySelector("#restart-sound");
+//const playBackgroundSoundBtn = document.querySelector("#play-background-sound");
+const toggleBackgroundSoundBtn = document.querySelector("#toggle-background-sound");
+const backgroundSound = document.querySelector("#game-background-sound");
 
 
 let turn0 = true;     // playerX, player0
@@ -31,7 +39,7 @@ const resetGame = () => {
 
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
-        
+        buttonSound.play();
 
         if(turn0){
             //player 0
@@ -39,12 +47,11 @@ boxes.forEach((box) => {
             turn0 = false; 
         } else {
             //player X
-            box.innerText = "⚔️";
+            box.innerText = "❌";
             turn0 = true;
         }
         box.disabled = true;
-
-       CheckWinner();
+        checkWinner();
     });
 });
 
@@ -65,11 +72,8 @@ const showWinner = (winner) => {
     msg.innerText = `Congratulations, winner is ${winner} `;
     msgContainer.classList.remove("hide");
     disableBoxes();
-
-    // Play sound effect
-    winSound.play();
+    celebrationSound.play();
     
-    // Trigger confetti effect
     confetti({
         particleCount: 100,
         spread: 70,
@@ -87,8 +91,8 @@ const showWinner = (winner) => {
 };
 
 
-const CheckWinner = () => {
-    for (pattern of winPatterns) {
+const checkWinner = () => {
+    for (const pattern of winPatterns) {
     
                 let pos1Val = boxes[pattern[0]].innerText;
                 let pos2Val = boxes[pattern[1]].innerText;
@@ -96,15 +100,44 @@ const CheckWinner = () => {
 
                 if (pos1Val != "" && pos2Val != "" && pos3Val  != ""){
                     if (pos1Val === pos2Val && pos2Val === pos3Val){
-                       
-                        showWinner(pos1Val);
+                       showWinner(pos1Val);
                     }
                 }
     }
 };
 
+newGameBtn.addEventListener("click", () => {
+    newGameSound.play();
+    resetGame();
+});
 
-newGameBtn.addEventListener("click", resetGame);
-resetBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", () => {
+    restartSound.play();
+    resetGame();
+});
+
+// playBackgroundSoundBtn.addEventListener("click", () => {
+//     backgroundSound.volume = 0.1; // Set volume to a desired level
+//     backgroundSound.play();
+// });
+
+
+toggleBackgroundSoundBtn.addEventListener("click", () => {
+    backgroundSound.volume = 0.1;
+    if(isBackgroundSoundPlaying){
+        backgroundSound.pause();
+        isBackgroundSoundPlaying = false;
+        toggleBackgroundSoundBtn.innerText = "Turn Backgroun Sound On";
+    }
+    else {
+        backgroundSound.play();
+        isBackgroundSoundPlaying = true;
+        toggleBackgroundSoundBtn.innerText = "Turn Background Sound Off";
+    }
+});
+
+
+
+
 
 
